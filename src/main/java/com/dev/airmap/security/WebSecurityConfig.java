@@ -26,8 +26,8 @@ import com.dev.airmap.security.services.UserDetailsServiceImpl;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
-    @Value("${spring.h2.console.path}")
-    private String h2ConsolePath;
+    // @Value("${spring.h2.console.path}")
+    // private String h2ConsolePath;
     
     @Autowired
     UserDetailsServiceImpl userDetailsService;
