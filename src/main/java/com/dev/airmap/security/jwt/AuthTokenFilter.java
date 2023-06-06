@@ -20,7 +20,7 @@ import com.dev.airmap.security.services.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
-    private JwtUtils jwtutils;
+    private JwtUtils jwtUtils;
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
@@ -32,7 +32,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         throws ServletException, IOException {
             try {
                 String jwt = parseJwt(request);
-                if (jwt != null && jwtutils.validateJwtToken(jwt)) {
+                if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                     String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -53,7 +53,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         }
 
         private String parseJwt(HttpServletRequest request) {
-            String jwt = jwtutils.getJwtFromCookies(request);
+            String jwt = jwtUtils.getJwtFromCookies(request);
             return jwt;
         }
 }
